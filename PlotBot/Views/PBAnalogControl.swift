@@ -5,7 +5,7 @@ struct PBAnalogControl: View {
   @StateObject var angleCharacteristic: PBFloatCharacteristic
   @State private var innerCircleLocation: CGPoint = .zero
   @State var snapAngle: Bool = false
-
+  
   
   func mirrorXAxis(angle: Double) -> Double {
     let twoPi = 2.0 * Double.pi
@@ -14,24 +14,24 @@ struct PBAnalogControl: View {
   }
   
   func closestValue(to number: Double, in values: [Double]) -> Double? {
-      guard !values.isEmpty else { return nil }
-      
-      var closestValue = values[0]
-      var smallestDifference = abs(closestValue - number)
-      
-      for value in values {
-          let difference = abs(value - number)
-          if difference < smallestDifference {
-              smallestDifference = difference
-              closestValue = value
-          }
+    guard !values.isEmpty else { return nil }
+    
+    var closestValue = values[0]
+    var smallestDifference = abs(closestValue - number)
+    
+    for value in values {
+      let difference = abs(value - number)
+      if difference < smallestDifference {
+        smallestDifference = difference
+        closestValue = value
       }
-      
-      return closestValue
+    }
+    
+    return closestValue
   }
   
   func roundToNearestTenth(_ value: Double) -> Double {
-      return (value * 10).rounded() / 10
+    return (value * 10).rounded() / 10
   }
   
   func getPosition(size: CGSize) -> CGPoint {
@@ -43,7 +43,7 @@ struct PBAnalogControl: View {
   }
   
   func fingerDrag(size:CGSize, location: CGPoint) -> some Gesture {
-      DragGesture()
+    DragGesture()
       .onChanged { value in
         // Calculate the distance between the finger location and the center of the inner circle
         let angle = atan2(value.location.y - location.y, value.location.x - location.x)
@@ -79,24 +79,23 @@ struct PBAnalogControl: View {
       GeometryReader { geometry in
         ZStack() {
           Circle()
-            .foregroundColor(.blue)
+            .foregroundColor(Color(red: 217 / 255, green: 214 / 255, blue: 212 / 255))
             .frame(
               width: min(geometry.size.width, geometry.size.height),
               height: min(geometry.size.width, geometry.size.height))
-          
           Circle()
-            .foregroundColor(.green)
+            .foregroundColor(Color(red: 30 / 255, green: 40 / 255, blue: 45 / 255))
             .frame(width: 90, height: 90)
             .position(getPosition(size: geometry.size))
             .gesture(fingerDrag(size: geometry.size, location: CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2)))
           if snapAngle {
             let radius = min(geometry.size.width, geometry.size.height)
             Path { path in
-              path.move(to: CGPoint(x: geometry.size.width / 2, y: 0))
-              path.addLine(to: CGPoint(x: geometry.size.width / 2, y: geometry.size.height))
+              path.move(to: CGPoint(x: geometry.size.width / 2, y: (geometry.size.height / 2) - (radius / 2)))
+              path.addLine(to: CGPoint(x: geometry.size.width / 2, y: (geometry.size.height / 2 ) + (radius / 2)))
               path.move(to: CGPoint(x: geometry.size.width / 2 - radius / 2, y: geometry.size.height / 2))
               path.addLine(to: CGPoint(x: geometry.size.width / 2 + radius / 2, y: geometry.size.height / 2))
-            }.stroke(Color.black.opacity(0.25), lineWidth: 1)
+            }.stroke(Color(red: 30 / 255, green: 40 / 255, blue: 45 / 255), lineWidth: 5)
           }
         }
       }
