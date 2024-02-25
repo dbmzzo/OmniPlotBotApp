@@ -160,14 +160,12 @@ extension RPBLEManager: CBPeripheralDelegate {
   
   // Updated descriptor value
   func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor descriptor: CBDescriptor, error: Error?) {
-    // Get and print user description for a given characteristic
     self.joystickReady = hasJoystickChars()
     self.objectWillChange.send()
   }
   
   // Discovered descriptors
   func peripheral(_ peripheral: CBPeripheral, didDiscoverDescriptorsFor characteristic: CBCharacteristic, error: Error?) {
-    // print("discovered descriptors")
     guard let descriptors = characteristic.descriptors else { return }
     for descriptor in descriptors {
       peripheral.readValue(for: descriptor);

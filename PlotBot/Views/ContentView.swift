@@ -22,11 +22,14 @@ struct DevicesList: View {
     NavigationView() {
       List(bleManager.discoveredDevices, id: \.self) { device in
         VStack() {
-          if bleManager.connectedDevices.contains(device) {
+          if bleManager.connectedDevices.contains(device) && bleManager.joystickReady {
             NavigationLink(device.name, destination: ControlView(device: device))
           } else {
-            Button(device.name) {
-              bleManager.connectPeripheral(peripheral: device.peripheral)
+            HStack() {
+              Text(device.name)
+              Spacer()
+              ProgressView()
+                .progressViewStyle(CircularProgressViewStyle())
             }
           }
         }
