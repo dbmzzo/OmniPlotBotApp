@@ -6,14 +6,10 @@ struct ControlView: View {
   var body: some View {
     VStack {
       if let speedValue = device.speedCharacteristic, let angleValue = device.angleCharacteristic {
-        VStack() {
-          PBAnalogControl(speedCharacteristic: speedValue as! PBFloatCharacteristic, angleCharacteristic: angleValue as! PBFloatCharacteristic);
-        }
+        PBAnalogControl(speedCharacteristic: speedValue as! PBFloatCharacteristic, angleCharacteristic: angleValue as! PBFloatCharacteristic);
       }
       if let rotationValue = device.rotationCharacteristic {
-        VStack() {
-          PBSlideControl(characteristic: rotationValue as! PBFloatCharacteristic);
-        }.padding()
+        PBSlideControl(characteristic: rotationValue as! PBFloatCharacteristic);
       }
     }
   }
