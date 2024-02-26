@@ -1,1 +1,1 @@
-# PlotBotApp
+# OmniPlotBotApp

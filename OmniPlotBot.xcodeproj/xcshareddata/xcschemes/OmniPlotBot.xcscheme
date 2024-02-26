@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "12F98DB227EEE91200F1DB0A"
                BuildableName = "PlotBot.app"
-               BlueprintName = "PlotBot"
-               ReferencedContainer = "container:PlotBot.xcodeproj">
+               BlueprintName = "OmniPlotBot"
+               ReferencedContainer = "container:OmniPlotBot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,8 +45,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "12F98DB227EEE91200F1DB0A"
             BuildableName = "PlotBot.app"
-            BlueprintName = "PlotBot"
-            ReferencedContainer = "container:PlotBot.xcodeproj">
+            BlueprintName = "OmniPlotBot"
+            ReferencedContainer = "container:OmniPlotBot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,8 +62,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "12F98DB227EEE91200F1DB0A"
             BuildableName = "PlotBot.app"
-            BlueprintName = "PlotBot"
-            ReferencedContainer = "container:PlotBot.xcodeproj">
+            BlueprintName = "OmniPlotBot"
+            ReferencedContainer = "container:OmniPlotBot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
