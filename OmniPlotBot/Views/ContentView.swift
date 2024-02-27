@@ -20,20 +20,16 @@ struct DevicesList: View {
   
   var body: some View {
     NavigationView() {
-      List(bleManager.discoveredDevices, id: \.self) { device in
         VStack() {
-          if bleManager.connectedDevices.contains(device) && bleManager.joystickReady {
-            NavigationLink(device.name, destination: ControlView(device: device))
+          if let device = bleManager.connectedDevices.first, bleManager.joystickReady {
+            ControlView(device: device)
           } else {
             HStack() {
-              Text(device.name)
-              Spacer()
               ProgressView()
                 .progressViewStyle(CircularProgressViewStyle())
             }
           }
         }
-      }.navigationTitle("Devices")
     }.frame(maxHeight: .infinity).navigationViewStyle(.stack)
   }
 }
